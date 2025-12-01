@@ -101,12 +101,12 @@ requirements.txt: Python dependencies.
 
 Lead Investigator: 
 
-$$Your Name$$
+$$Baiel Zhumadylov$$
 
 
 Technical Collaborator: 
 
-$$Friend's Name$$
+$$Emirbek$$
 
 Contributions are welcome! Please open an issue to discuss proposed changes or feature additions (e.g., adding PhenoAge or GrimAge benchmarks).
 
