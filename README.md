@@ -68,7 +68,7 @@ To replicate this analysis or use the clock on your own data:
 
 1. Clone the Repository
 
-git clone [https://github.com/YOUR_USERNAME/open-epigenetic-clock.git](https://github.com/YOUR_USERNAME/open-epigenetic-clock.git)
+git clone [https://github.com/bayexl/open-epigenetic-clock.git](https://github.com/bayexl/open-epigenetic-clock.git)
 cd open-epigenetic-clock
 
 
@@ -97,16 +97,10 @@ top_biomarkers.csv: The full list of significant aging biomarkers discovered.
 
 requirements.txt: Python dependencies.
 
-🤝 Contributing & Credits
 
 Lead Investigator: 
 
 $$Baiel Zhumadylov$$
-
-
-Technical Collaborator: 
-
-$$Emirbek$$
 
 Contributions are welcome! Please open an issue to discuss proposed changes or feature additions (e.g., adding PhenoAge or GrimAge benchmarks).
 
