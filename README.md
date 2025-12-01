@@ -100,7 +100,7 @@ requirements.txt: Python dependencies.
 
 Lead Investigator: 
 
-$$Baiel Zhumadylov$$
+$$Baiel  Zhumadylov$$
 
 Contributions are welcome! Please open an issue to discuss proposed changes or feature additions (e.g., adding PhenoAge or GrimAge benchmarks).
 
