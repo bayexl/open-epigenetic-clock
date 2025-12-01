@@ -19,7 +19,7 @@ Build a commercially viable 20-CpG panel that retains ~85% of baseline accuracy 
 Training: Hannum cohort (GSE40279)
 Validation: Liu cohort (GSE42861)
 
-Model Comparison Table (Correct Markdown)
+Model Comparison Table
 | Model Version | Feature Count | MAE (Validation) | Correlation (R) | Est. Cost per Test |
 | :--- | :--- | :--- | :--- | :--- |
 | **Full Genome** (Baseline) | ~5,000 CpGs | **3.71 Years** | > 0.95 | ~$300 (Array) |
