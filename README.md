@@ -1,132 +1,109 @@
 Open Epigenetic Clock: Robust Biological Age Estimation 🧬
 
-A production-ready machine learning framework for estimating biological age from DNA methylation data. Features a validated "Lite" panel of 20 biomarkers optimized for low-cost screening.
+A production-ready machine learning framework for estimating biological age from DNA methylation data. Includes a validated 20-CpG "Lite" Clock optimized for low-cost screening.
 
 📌 Project Overview
 
-Epigenetic clocks (e.g., Horvath, Hannum) are the gold standard for quantifying biological aging. However, most existing models rely on high-dimensional genomic arrays (Illumina 450k/EPIC), which are cost-prohibitive (~$300+/sample) for widespread population screening.
+Epigenetic clocks (Horvath, Hannum, etc.) are the standard tools for quantifying biological aging. Most require expensive genome-wide methylation arrays (~$300+ per sample), limiting accessibility.
 
-This project implements a reproducible, open-source pipeline to:
+This project provides an open, reproducible pipeline to:
 
-Train a robust age estimator using Elastic Net Regression on public methylation data ($n=656$).
+Train an Elastic Net–based age estimator using public methylation data (n=656).
 
-Validate the model on an independent external cohort ($n=689$) to ensure generalizability.
+Blindly validate on an external cohort (n=689).
 
-Engineer a commercially viable "Lite" panel of just 20 genes that retains ~85% of the accuracy at ~10% of the sequencing cost.
+Build a commercially viable 20-CpG panel that retains ~85% of baseline accuracy at ~10% of the sequencing cost.
 
 📊 Key Performance Metrics
 
-The model was trained on the Hannum cohort (GSE40279) and blindly validated on the Liu cohort (GSE42861).
+Training: Hannum cohort (GSE40279)
+Validation: Liu cohort (GSE42861)
 
-Model Version
+Model Comparison Table (Correct Markdown)
+| Model Version | Feature Count | MAE (Validation) | Correlation (R) | Est. Cost per Test |
+| :--- | :--- | :--- | :--- | :--- |
+| **Full Genome** (Baseline) | ~5,000 CpGs | **3.71 Years** | > 0.95 | ~$300 (Array) |
+| **Startup "Lite" Panel** | 20 CpGs | **4.59 Years** | > 0.90 | ~$50 (Targeted) |
 
-Feature Count
+📈 Validation Results
 
-MAE (Validation)
+(Add your plot as results_plot.png to your repo root for it to render.)
 
-Correlation (R)
-
-Est. Cost per Test
-
-Full Genome (Baseline)
-
-~5,000 CpGs
-
-3.71 Years
-
-> 0.95
-
-~$300 (Array)
-
-Startup "Lite" Panel
-
-20 CpGs
-
-4.59 Years
-
-> 0.90
-
-~$50 (Targeted)
-
-Validation Results
-
-(Note: Ensure you have uploaded your scatter plot image to the repo and named it 'https://www.google.com/search?q=results_plot.png' for it to appear here).
+![Validation Plot](results_plot.png)
 
 🧬 Biological Discovery
 
-The model blindly identified established aging biomarkers without prior biological constraints, validating its signal detection capabilities:
+The model independently rediscovered well-established aging biomarkers:
 
-ELOVL2 (cg16867657): The strongest positive predictor. Involved in fatty acid elongation; a standard forensic age marker.
+ELOVL2 (cg16867657) — canonical forensic age marker; strongest signal.
 
-FHL2 (cg22454769): Associated with cardiovascular aging and transcriptional regulation.
+FHL2 (cg22454769) — linked to cardiovascular aging.
 
-KLF14 (cg14361627): Linked to metabolic traits and Type 2 diabetes risk.
+KLF14 (cg14361627) — associated with metabolic traits and T2D risk.
 
-ITGA2B (cg08097417): Integrin alpha-IIb, associated with platelet function and immune aging.
+ITGA2B (cg08097417) — immune and platelet aging.
+
+The pipeline performs no biological pre-selection; these emerge purely from signal strength.
 
 🛠️ Methodology & Tech Stack
 
-The pipeline utilizes a high-performance machine learning approach suitable for high-dimensional genomic data (p >> n):
-
 Language: Python 3.10+
-
 Libraries: pandas, scikit-learn, numpy, seaborn
-
-Algorithm: Elastic Net Regression (L1/L2 regularization) with Cross-Validation.
-
-Optimization: Pareto frontier analysis to determine the minimal viable feature set.
+Algorithm: Elastic Net Regression with cross-validation
+Design: High-dimensional genomic modeling (p >> n)
 
 Pipeline Architecture
 
-Ingestion: Automated fetching of raw beta-values from NCBI GEO.
+Data Ingestion
+Automated download of raw beta-value matrices (GEO).
 
-Preprocessing: Sex-chromosome filtering, missing value imputation, and probe alignment.
+Preprocessing
 
-Feature Selection: Univariate pre-filtering (f-regression) to reduce dimensionality.
+Probe alignment
 
-Training: Elastic Net optimization (alpha and l1_ratio tuning).
+Missing value imputation
 
-Productization: Recalibration of a linear model on the top 20 features for the "Lite" panel.
+Remove sex-chromosome probes
+
+Feature Selection
+Univariate ranking using f-regression.
+
+Model Training
+Elastic Net with tuned alpha + L1/L2 ratio.
+
+Lite Panel Productization
+
+Select top 20 biomarkers
+
+Fit a linear model for deployment
+
+Export final CSV weights
 
 🚀 Installation & Usage
-
-To replicate this analysis or use the clock on your own data:
-
 1. Clone the Repository
-
-git clone [https://github.com/bayexl/open-epigenetic-clock.git](https://github.com/bayexl/open-epigenetic-clock.git)
+git clone https://github.com/bayexl/open-epigenetic-clock.git
 cd open-epigenetic-clock
 
-
 2. Install Dependencies
-
 pip install -r requirements.txt
 
-
-3. Run the Analysis
-
-Open the Jupyter Notebook to run the full training and validation pipeline:
-
+3. Run the Pipeline
 jupyter notebook Epigenetic_Clock_Final.ipynb
-
 
 📂 Repository Structure
 
-Epigenetic_Clock_Final.ipynb: The main analysis pipeline (Training, Validation, Visualization).
+Epigenetic_Clock_Final.ipynb — full pipeline (training → validation → plotting)
 
-startup_clock_final.csv: The definition of the "Lite" clock (Gene IDs and Weights).
+startup_clock_final.csv — the 20-CpG Lite clock (gene IDs + weights)
 
-top_biomarkers.csv: The full list of significant aging biomarkers discovered.
+top_biomarkers.csv — ranked list of significant CpGs
 
-requirements.txt: Python dependencies.
-
-🤝 Contributing & Credits
+requirements.txt — environment dependencies
 
 Lead Investigator: Baiel Zhumadylov
-Technical Collaborator: Emirbek
 
-Contributions are welcome! Please open an issue to discuss proposed changes or feature additions (e.g., adding PhenoAge or GrimAge benchmarks).
+Contributions are welcome. Open an issue to discuss new features (e.g., PhenoAge/GrimAge integrations).
 
 📄 License
 
-Distributed under the MIT License. See LICENSE for more information.
+Distributed under the MIT License.
