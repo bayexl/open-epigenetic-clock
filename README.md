@@ -24,7 +24,7 @@ The model was trained on the Hannum cohort (GSE40279) and blindly validated on t
 
 Validation Results
 
-(Note: Upload your 'side-by-side' scatter plot image to the repo and name it 'https://www.google.com/search?q=results_plot.png' for it to appear here).
+https://github.com/bayexl/open-epigenetic-clock/blob/main/results_plot.png
 
 🧬 Biological Discovery
 
