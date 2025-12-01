@@ -27,8 +27,6 @@ Model Comparison Table (Correct Markdown)
 
 📈 Validation Results
 
-(Add your plot as results_plot.png to your repo root for it to render.)
-
 ![Validation Plot](results_plot.png)
 
 🧬 Biological Discovery
