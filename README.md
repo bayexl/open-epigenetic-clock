@@ -50,6 +50,8 @@ Startup "Lite" Panel
 
 Validation Results
 
+(Note: Ensure you have uploaded your scatter plot image to the repo and named it 'https://www.google.com/search?q=results_plot.png' for it to appear here).
+
 🧬 Biological Discovery
 
 The model blindly identified established aging biomarkers without prior biological constraints, validating its signal detection capabilities:
@@ -64,7 +66,7 @@ ITGA2B (cg08097417): Integrin alpha-IIb, associated with platelet function and i
 
 🛠️ Methodology & Tech Stack
 
-The pipeline utilizes a high-performance machine learning approach suitable for high-dimensional genomic data ($p >> n$):
+The pipeline utilizes a high-performance machine learning approach suitable for high-dimensional genomic data (p >> n):
 
 Language: Python 3.10+
 
@@ -80,9 +82,9 @@ Ingestion: Automated fetching of raw beta-values from NCBI GEO.
 
 Preprocessing: Sex-chromosome filtering, missing value imputation, and probe alignment.
 
-Feature Selection: Univariate pre-filtering ($f$-regression) to reduce dimensionality.
+Feature Selection: Univariate pre-filtering (f-regression) to reduce dimensionality.
 
-Training: Elastic Net optimization ($\alpha$ and $l1\_ratio$ tuning).
+Training: Elastic Net optimization (alpha and l1_ratio tuning).
 
 Productization: Recalibration of a linear model on the top 20 features for the "Lite" panel.
 
